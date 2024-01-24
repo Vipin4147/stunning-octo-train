@@ -1,0 +1,90 @@
+1. callback function :=> In JavaScript, a callback function is a function that is passed as an argument to another function and is intended to be executed later, often after an asynchronous operation or an event occurs.
+The idea is that the callback function is "called back" at a later point in time, usually after the completion of some operation.
+
+2. Case Sensitivity :=> Yes, JavaScript is a case-sensitive programming language. This means that it distinguishes between uppercase and lowercase letters. Variable names, function names, and other identifiers must be consistently written with the correct capitalization.
+        example:=> // Case-sensitive variable names
+               var myVariable = 10;
+                var MyVariable = 20;
+               console.log(myVariable);   // Outputs 10
+               console.log(MyVariable);   // Outputs 20
+
+3. Alert vs. Confirmation Box :=> In JavaScript, alert boxes and confirmation boxes are both methods of interacting with users through simple dialog boxes. However, they serve different purposes and have distinct behaviors.
+Alert Box:
+An alert box is used to display information to the user. It provides a way to show a message and an OK button to acknowledge the message.
+The execution of the script is paused until the user clicks the OK button.
+It is commonly used for displaying information, warnings, or error messages to the user.
+Confirmation Box:
+A confirmation box, on the other hand, is used to get a binary response from the user—typically a "yes" or "no" answer.
+It displays a message along with OK and Cancel buttons.
+The script execution is paused until the user clicks either OK or Cancel.
+It is commonly used for obtaining user confirmation before proceeding with an action, such as deleting a record.
+
+4. Garbage collection :=> Garbage collection is a process in programming languages, including JavaScript, that automatically frees up memory occupied by objects that are no longer reachable or in use by the program. In JavaScript, memory management is handled automatically by the browser or the JavaScript engine, making it a memory-safe language for developers.
+
+5. Async Calls vs. Promises :=> Asynchronous function calls and promises are both concepts in JavaScript used to handle asynchronous operations, but they differ in their approach and syntax. Let's discuss the differences between asynchronous function calls and promises:
+
+Asynchronous Function Calls:
+Callback Functions:
+
+Asynchronous operations in JavaScript were traditionally handled using callback functions.
+A callback function is passed as an argument to an asynchronous function and gets executed once the operation is complete.
+Callback Hell (Pyramid of Doom):
+
+Asynchronous operations nested within one another can lead to the "callback hell" or "pyramid of doom" problem, making the code difficult to read and maintain.
+Readability and Maintainability:
+
+Code using callback functions can become less readable and harder to maintain as the number of nested callbacks increases.
+Example of an asynchronous operation using callbacks:
+
+javascript
+Copy code
+function fetchData(callback) {
+  setTimeout(function() {
+    console.log("Data fetched!");
+    callback();
+  }, 1000);
+}
+
+fetchData(function() {
+  console.log("Callback executed!");
+});
+Promises:
+Structured and Chaining:
+
+Promises provide a more structured way to handle asynchronous operations.
+A promise represents the result of an asynchronous operation and can be in one of three states: pending, fulfilled, or rejected.
+Promises allow chaining, making the code more readable and avoiding callback hell.
+Error Handling:
+
+Promises come with built-in error handling through catch, which makes it easier to manage errors in asynchronous code.
+Promise API:
+
+The Promise API includes methods like then and catch for handling success and failure scenarios, respectively.
+Example using promises:
+
+       //function fetchData() {
+         return new Promise(function(resolve, reject) {
+          setTimeout(function() {
+            console.log("Data fetched!");
+             resolve();
+           }, 1000);
+        });
+       //}
+
+     // fetchData()
+         .then(function() {
+        console.log("Promise resolved!");
+        })
+         .catch(function(error) {
+          console.error("Error:", error);
+      //     });
+Choosing Between Them:
+Use Callbacks When:
+
+Working in environments or with codebases that don't support Promises (older JavaScript versions).
+Dealing with simple asynchronous operations where the callback approach is sufficient and doesn't lead to callback hell.
+Use Promises When:
+
+Working with modern JavaScript environments and libraries.
+Handling more complex asynchronous workflows, especially when chaining multiple asynchronous operations.
+Utilizing built-in error handling capabilities provided by promises.
